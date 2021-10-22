@@ -8,16 +8,12 @@ public class GameManager : MonoBehaviour
     #region Properties
     public static GameManager Instance = null;
 
-    [Header("Camera Reference")]
-    [SerializeField] private GameObject matchStickCam = null;
-    [SerializeField] private GameObject matchBurnCam = null;
-    [SerializeField] private GameObject zoomOutCamera = null;
+    [Header("Component Reference")]
+    [SerializeField] public List<GameObject> controlObjects;
 
 
     [Header("Attributes")]
     [SerializeField] private int currentScore;
-    [SerializeField] private int currentFoodRoasted;
-    [SerializeField] private int currentGem;
     [SerializeField] private int currentLevel;
     [SerializeField] private int maxLevels;
 
@@ -39,19 +35,31 @@ public class GameManager : MonoBehaviour
     {
         //SwitchCamera(CameraType.MatchStickCamera);
         currentLevel = PlayerPrefs.GetInt("level", 1);
+        foreach (GameObject g in controlObjects)
+        {
+            g.SetActive(false);
+        }
         UIManager.Instance.UpdateLevel(currentLevel);
+
     }
     #endregion
 
     public void StartLevel()
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.Gameplay);
-
+        foreach(GameObject g in controlObjects)
+        {
+            g.SetActive(true);
+        }
     }
 
     public void WinLevel()
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.GameWin);
+        foreach (GameObject g in controlObjects)
+        {
+            g.SetActive(false);
+        }
         PlayerPrefs.SetInt("level", currentLevel + 1);
         currentLevel++;
 
@@ -88,24 +96,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.UpdateScore(currentScore);
     }
 
-    public void AddCurrentFoodRoasted()
-    {
-        currentFoodRoasted++;
-
-    }
-    public void CameraZoomOut()
-    {
-        matchStickCam.SetActive(false);
-        zoomOutCamera.SetActive(true);
-    }
-
-    public void CameraZoomIn()
-    {
-        matchStickCam.SetActive(true);
-        zoomOutCamera.SetActive(false);
-    }
-
-
+  
 
   
     #endregion
