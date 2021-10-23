@@ -6,12 +6,20 @@ public class CatBoneManager : MonoBehaviour
 {
     [Header("Component References")]
     [SerializeField] List<Bone> bones;
-    [SerializeField]public List<Bone> nonTouchingBones;
+    [SerializeField] public List<Bone> nonTouchingBones;
     [SerializeField] public List<Bone> touchingBones;
 
-
+    [SerializeField] float touchPercent;
+    float targetTouchPercent;
+    float lerpSpeed=0.05f;
     public static CatBoneManager Instance = null;
 
+    private void Update()
+    {
+        targetTouchPercent = Mathf.Lerp(targetTouchPercent, touchPercent, lerpSpeed);
+        UIManager.Instance.UpdateFillBar(targetTouchPercent / 100);
+
+    }
 
     private void Awake()
     {
@@ -23,30 +31,14 @@ public class CatBoneManager : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    public void AddNonTouchingBone(Bone b)
-    {
-        if (!nonTouchingBones.Contains(b))
-        {
-            nonTouchingBones.Add(b);
-        }
-    }
-    public void RemoveNonTouchingBone(Bone b)
-    {
-        if (nonTouchingBones.Contains(b))
-        {
-            nonTouchingBones.Remove(b);
-        }
-    }
+
     public void AddTouchingBone(Bone b)
     {
         if (!touchingBones.Contains(b))
         {
             touchingBones.Add(b);
+            touchPercent = (1- ((float)touchingBones.Count /(float) bones.Count)) *100;
+           // UIManager.Instance.UpdateFillBar(touchPercent / 100);
         }
     }
     public void RemoveTouchingBone(Bone b)
@@ -54,28 +46,24 @@ public class CatBoneManager : MonoBehaviour
         if (touchingBones.Contains(b))
         {
             touchingBones.Remove(b);
-
+            touchPercent = (1 - ((float)touchingBones.Count / (float)bones.Count)) * 100;
+           // UIManager.Instance.UpdateFillBar(touchPercent / 100);
         }
         if (touchingBones.Count <= 0)
         {
-            GameManager.Instance.WinLevel();
+
+            Invoke("Win", 1.5f);
         }
     }
-    // Update is called once per frame
-    void Update()
+    public void Win()
     {
-        
+        this.enabled = false;
+        GameManager.Instance.WinLevel();
     }
+
     public void AddBone(Bone b)
     {
         bones.Add(b);
     }
-    public void UpdateBoneCounter()
-    {
-        if(nonTouchingBones.Count > bones.Count - 2)
-        {
-            GameManager.Instance.WinLevel();
-        }
-        
-    }
+
 }

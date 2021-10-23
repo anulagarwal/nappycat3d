@@ -33,10 +33,7 @@ public class Bone : MonoBehaviour
             cross.transform.SetParent(transform);
         }
 
-        if (collision.gameObject.tag == "Ground")
-        {
-
-        }
+    
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -47,11 +44,17 @@ public class Bone : MonoBehaviour
         if (collision.gameObject.tag == "Thigh")
         {
             isTouchingHuman = false;
-         
-            CatBoneManager.Instance.RemoveTouchingBone(this);
             Destroy(cross);
-           
 
+            Invoke("CheckTouch", 0.6f);
+        }
+    }
+
+    void CheckTouch()
+    {
+        if (!isTouchingHuman)
+        {
+            CatBoneManager.Instance.RemoveTouchingBone(this);
         }
     }
 }

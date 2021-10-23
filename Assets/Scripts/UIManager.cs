@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PointText;
     [SerializeField] private GameObject AwesomeText;
 
+
     [Header("UI Panel")]
     [SerializeField] private GameObject mainMenuUIPanel = null;
     [SerializeField] private GameObject gameplayUIPanel = null;
@@ -21,6 +22,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText = null;
     [SerializeField] private Text mainLevelText = null;
     [SerializeField] private Text inGameLevelText = null;
+
+    [Header("Fill Bar")]
+    [SerializeField] private Image fillBar;
+    [SerializeField] private Text fillPercent;
+    [SerializeField] private Transform slider;
+    [SerializeField] private float sliderMinVal;
+    [SerializeField] private float sliderMaxVal;
+
+
 
     #endregion
 
@@ -89,6 +99,13 @@ public class UIManager : MonoBehaviour
         inGameLevelText.text = "LEVEL " + level;
     }
 
+    public void UpdateFillBar(float val)
+    {
+        fillBar.fillAmount = val;
+        fillPercent.text = Mathf.Round( (val * 100 ))+ "%";
+        
+        slider.transform.localPosition = new Vector3( sliderMinVal + ((sliderMaxVal - sliderMinVal)/ (1 / val)), 0, 0);
+    }
 
     public void SpawnPointText(Vector3 point)
     {

@@ -29,7 +29,7 @@ public class Selector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localRotation = Quaternion.Euler(0, -90, 0);
+        transform.rotation = Quaternion.Euler(0, -0, 0);
         if (Input.GetMouseButtonDown(0))
         {
 
