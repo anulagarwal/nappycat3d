@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Component Reference")]
     [SerializeField] public List<GameObject> controlObjects;
+    [SerializeField] public GameObject confetti;
+    [SerializeField] public GameObject cross;
+
+
 
 
     [Header("Attributes")]
@@ -55,7 +59,9 @@ public class GameManager : MonoBehaviour
 
     public void WinLevel()
     {
-        UIManager.Instance.SwitchUIPanel(UIPanelState.GameWin);
+
+        confetti.SetActive(true);
+        Invoke("ShowWinUI", 1.4f);
         foreach (GameObject g in controlObjects)
         {
             g.SetActive(false);
@@ -86,16 +92,31 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Level " + currentLevel);
     }
 
+    public void LoadScene(string s)
+    {
+        SceneManager.LoadScene(s);
+
+    }
+    void ShowWinUI()
+    {
+        UIManager.Instance.SwitchUIPanel(UIPanelState.GameWin);
+
+    }
     #endregion
 
     #region Public Core Functions
-   
+
     public void AddScore(int value)
     {
         currentScore += value;
         UIManager.Instance.UpdateScore(currentScore);
     }
 
+    public void SpawnCross(Vector3 pos, Transform t)
+    {
+        GameObject g= Instantiate(cross, pos, Quaternion.identity);
+        g.transform.parent = t;
+    }
   
 
   

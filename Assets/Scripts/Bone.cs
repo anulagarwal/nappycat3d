@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bone : MonoBehaviour
 {
     public bool isTouchingHuman;
+    public GameObject cross;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,15 +16,21 @@ public class Bone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (cross != null)
+        {
+        cross.transform.rotation = Quaternion.Euler(Vector3.zero);
+            
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Human")
+        if (collision.gameObject.tag == "Thigh")
         {
             isTouchingHuman = true;       
             CatBoneManager.Instance.AddTouchingBone(this);
+            cross =Instantiate(GameManager.Instance.cross, collision.contacts[0].point, Quaternion.identity);
+            cross.transform.SetParent(transform);
         }
 
         if (collision.gameObject.tag == "Ground")
@@ -37,12 +44,12 @@ public class Bone : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Human")
+        if (collision.gameObject.tag == "Thigh")
         {
             isTouchingHuman = false;
          
             CatBoneManager.Instance.RemoveTouchingBone(this);
-
+            Destroy(cross);
            
 
         }
