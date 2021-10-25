@@ -1,0 +1,650 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bedf342f7517b48a204328f1d6dc1b, type: 3}
+  m_Name: WomanLieDown
+  m_EditorClassIdentifier: 
+  mass: 70
+  layer: 0
+  physicMaterial: {fileID: 0}
+  spring: 1000
+  damper: 10
+  previewBones:
+  - name: ROOT
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: -1
+    childIDs: 01000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.00000013586798, y: 0.7071068, z: 0.7071068, w: -0.00000013517591}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.40257046}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.40257046}
+    capsuleBounds:
+      height: 0.8051409
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0
+  - name: TP Pelvis
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 0
+    childIDs: 020000000500000008000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.0000007801082, y: 0.7075303, z: 0.706683, w: 0.0000007798653}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: -0.0055392683, z: 0.047451477}
+      m_Extent: {x: 0.05, y: 0.10122706, z: 0.047451477}
+    capsuleBounds:
+      height: 0.20245412
+      radius: 0.05
+      direction: 1
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0
+  - name: TP L Thigh
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 1
+    childIDs: 03000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.67088306, y: 0.00000027076297, z: 0.00000029861482, w: -0.74156326}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.17986546}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.17986546}
+    capsuleBounds:
+      height: 0.35973093
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP L Calf
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 2
+    childIDs: 04000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.7415642, y: -0.0000006958705, z: -0.00000063017785, w: -0.6708819}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.17986535}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.17986535}
+    capsuleBounds:
+      height: 0.3597307
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP L Foot
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 3
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.7071073, y: -0.0000005514974, z: -0.00000055126736, w: -0.7071063}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0
+      radius: 0
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05263158
+  - name: TP R Thigh
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 1
+    childIDs: 06000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.67088306, y: -0.00000062567443, z: -0.00000069225865, w: -0.74156326}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.17986542}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.17986542}
+    capsuleBounds:
+      height: 0.35973084
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP R Calf
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 5
+    childIDs: 07000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.7415642, y: -0.0000006958705, z: -0.00000063017785, w: -0.6708819}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.17986535}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.17986535}
+    capsuleBounds:
+      height: 0.3597307
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP R Foot
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 6
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.7071073, y: -0.0000005515405, z: -0.0000005513111, w: -0.7071063}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0
+      radius: 0
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05263158
+  - name: TP Spine
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 1
+    childIDs: 09000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.0000013771722, y: 0.70710623, z: 0.7071074, w: -0.0000013764823}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0.0003661886, y: 0.021535076, z: 0.07152097}
+      m_Extent: {x: 0.1068835, y: 0.07153508, z: 0.07152097}
+    capsuleBounds:
+      height: 0.213767
+      radius: 0.07153508
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0
+  - name: TP Spine1
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 8
+    childIDs: 0a000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.0000009945301, y: 0.70710653, z: 0.7071071, w: 0.0000009952229}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0.0063918307, z: 0.07152114}
+      m_Extent: {x: 0.103787534, y: 0.056391835, z: 0.07152114}
+    capsuleBounds:
+      height: 0.20757507
+      radius: 0.07152114
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0
+  - name: TP Spine2
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 9
+    childIDs: 0b0000000f00000011000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.0000015097638, y: 0.76121414, z: 0.6485007, w: -0.0000012856768}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: -0.0028936248, z: 0.052328847}
+      m_Extent: {x: 0.11614044, y: 0.047106378, z: 0.052328847}
+    capsuleBounds:
+      height: 0.23228088
+      radius: 0.052328847
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0
+  - name: TP L Clavicle
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 10
+    childIDs: 0c000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.49999893, y: 0.50000036, z: 0.50000113, w: -0.49999967}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.038936827}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.038936827}
+    capsuleBounds:
+      height: 0.1
+      radius: 0.05
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.056140423
+  - name: TP L UpperArm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 11
+    childIDs: 0d000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.6123729, y: 0.35355422, z: 0.3535535, w: -0.6123715}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.11174679}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.11174679}
+    capsuleBounds:
+      height: 0.22349358
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP L Forearm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 12
+    childIDs: 0e000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.32562333, y: 0.1879988, z: 0.46331057, w: -0.802477}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.11174656}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.11174656}
+    capsuleBounds:
+      height: 0.22349311
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP L Hand
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 13
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.33141437, y: 0.19134103, z: 0.46193752, w: -0.8001042}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0
+      radius: 0
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05263158
+  - name: TP Neck
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 10
+    childIDs: 10000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.00000084394503, y: 0.7068249, z: 0.7073886, w: 0.0000008453109}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.0455339}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.0455339}
+    capsuleBounds:
+      height: 0.1
+      radius: 0.05
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP Head
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 15
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.00000050462245, y: 0.70710677, z: 0.70710677, w: -0.00000050466457}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0
+      radius: 0
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP R Clavicle
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 10
+    childIDs: 12000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.4999996, y: 0.50000125, z: 0.5000005, w: 0.4999988}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.03893683}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.03893683}
+    capsuleBounds:
+      height: 0.1
+      radius: 0.05
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP R UpperArm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 17
+    childIDs: 13000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.61237293, y: 0.35355565, z: 0.35355416, w: 0.6123703}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.1117468}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.1117468}
+    capsuleBounds:
+      height: 0.2234936
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP R Forearm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 18
+    childIDs: 14000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.32562336, y: -0.1879993, z: -0.4633114, w: -0.80247635}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.11174638}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.11174638}
+    capsuleBounds:
+      height: 0.22349276
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.06666667
+  - name: TP R Hand
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 19
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.33141488, y: -0.19134215, z: -0.4619388, w: -0.80010307}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0
+      radius: 0
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05263158

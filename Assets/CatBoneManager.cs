@@ -19,6 +19,7 @@ public class CatBoneManager : MonoBehaviour
         targetTouchPercent = Mathf.Lerp(targetTouchPercent, touchPercent, lerpSpeed);
         UIManager.Instance.UpdateFillBar(targetTouchPercent / 100);
 
+
     }
 
     private void Awake()

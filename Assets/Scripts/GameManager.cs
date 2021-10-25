@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Level " + currentLevel);
+        SceneManager.LoadScene("Play");
     }
 
     public void LoadScene(string s)

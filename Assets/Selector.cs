@@ -7,17 +7,15 @@ public class Selector : MonoBehaviour
     [Header("Attributes")]
     bool isMouseDown;
 
-    float oldX;
-    float oldY;
-
-    bool xAxis;
-    bool yAxis;
 
 
+    [SerializeField] Vector3 rotateAxis;
     private float _sensitivity;
     private Vector3 _mouseReference;
     private Vector3 _mouseOffset;
     private Vector3 _rotation;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +27,7 @@ public class Selector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0, -0, 0);
+        //transform.rotation = Quaternion.Euler(0, -0, 0);
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -44,10 +42,12 @@ public class Selector : MonoBehaviour
 
                 // apply rotation
                 _rotation.y = -(_mouseOffset.x ) * _sensitivity;
+                _rotation.x = -(_mouseOffset.y) * _sensitivity;
                 _rotation.z = -(_mouseOffset.y) * _sensitivity;
 
+
                 // rotate
-                transform.parent.Rotate(_rotation);
+                transform.parent.Rotate(new Vector3( _rotation.x * rotateAxis.x, _rotation.y * rotateAxis.y, _rotation.z * rotateAxis.z));
 
                 // store mouse
                 _mouseReference = Input.mousePosition;
