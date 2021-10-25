@@ -50,8 +50,7 @@ public class Bone : MonoBehaviour
         }
     }
 
-    void CheckTouch()
-    {
+    void CheckTouch() { 
         if (!isTouchingHuman)
         {
             CatBoneManager.Instance.RemoveTouchingBone(this);
