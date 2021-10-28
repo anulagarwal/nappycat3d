@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         }
         UIManager.Instance.UpdateLevel(currentLevel);
         currentState = GameState.Main;
+        maxLevels = 3;
     }
     #endregion
 
@@ -105,10 +106,7 @@ public class GameManager : MonoBehaviour
 
     #region Scene Management
 
-    public void NextLevel()
-    {
-        SceneManager.LoadScene("Level " + currentLevel);
-    }
+   
 
     public void ChangeLevel()
     {
@@ -126,16 +124,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Level " + currentLevel);
         }
     }
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene("Play");
-    }
-
-    public void LoadScene(string s)
-    {
-        SceneManager.LoadScene(s);
-
-    }
+  
     #endregion
 
 

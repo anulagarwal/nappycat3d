@@ -34,15 +34,15 @@ public class Selector : MonoBehaviour
     float ClampAngle(float angle, float from, float to)
     {
         // accepts e.g. -80, 80
-       // angle = angle - 180f * Mathf.Floor((angle + 180f) / 180f);
-       // if (angle < 0f) angle = 360 + angle;
+      //  angle = angle - 180f * Mathf.Floor((angle + 180f) / 180f);
+       if (angle < 0f) angle = 360 + angle;
 
-       // if (angle > 360f) angle = 358f;
-        // if (angle > 180f)
-        //   return Mathf.Max(angle, 360 + from);
+       //if (angle > 360f) angle = 358f;
+         if (angle > 180f)
+           return Mathf.Max(angle, 360 + from);
 
-        // return Mathf.Max(Mathf.Min(angle, to), from);
-        return Mathf.Clamp(angle, from, to);
+         return Mathf.Max(Mathf.Min(angle, to), from);
+       // return Mathf.Clamp(angle, from, to);
     }
 
     // Update is called once per frame
@@ -76,7 +76,7 @@ public class Selector : MonoBehaviour
                 print(transform.parent.localEulerAngles);
 
                 // transform.parent.localRotation = Quaternion.Euler(ClampAngle(transform.parent.localEulerAngles.x, minRotClamp.x, maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, minRotClamp.y, maxRotClamp.y), Mathf.Clamp(transform.parent.localEulerAngles.z, minRotClamp.z, maxRotClamp.z));
-                transform.parent.localRotation = Quaternion.Euler(Mathf.Clamp(transform.parent.localEulerAngles.x, baseRot.x+ minRotClamp.x,baseRot.x+ maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, baseRot.y+ minRotClamp.y,baseRot.y+ maxRotClamp.y), ClampAngle(transform.parent.localEulerAngles.z,baseRot.z+ minRotClamp.z,baseRot.z+ maxRotClamp.z));
+                transform.parent.localRotation = Quaternion.Euler(ClampAngle(transform.parent.localEulerAngles.x, baseRot.x+ minRotClamp.x,baseRot.x+ maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, baseRot.y+ minRotClamp.y,baseRot.y+ maxRotClamp.y), ClampAngle(transform.parent.localEulerAngles.z,baseRot.z+ minRotClamp.z,baseRot.z+ maxRotClamp.z));
 
 
                 //transform.parent.localEulerAngles = new Vector3(Mathf.Clamp(transform.parent.localEulerAngles.x, minRotClamp.x, maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, minRotClamp.y, maxRotClamp.y), ClampAngle(transform.parent.localEulerAngles.z, minRotClamp.z, maxRotClamp.z));
