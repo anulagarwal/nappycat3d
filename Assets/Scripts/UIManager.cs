@@ -30,8 +30,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float sliderMinVal;
     [SerializeField] private float sliderMaxVal;
 
-
-
+    [Header("Sleep Fill Bar")]
+    [SerializeField] private Image sleepfillBar;
+    
+ 
     #endregion
 
     #region MonoBehaviour Functions
@@ -106,6 +108,12 @@ public class UIManager : MonoBehaviour
         
         slider.transform.localPosition = new Vector3( sliderMinVal + ((sliderMaxVal - sliderMinVal)/ (1 / val)), 0, 0);
     }
+
+    public void UpdateSleepFillBar(float val)
+    {
+        sleepfillBar.fillAmount = val;        
+    }
+ 
 
     public void SpawnPointText(Vector3 point)
     {

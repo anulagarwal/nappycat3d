@@ -10,7 +10,7 @@ public class Bone : MonoBehaviour
     void Start()
     {
         CatBoneManager.Instance.AddBone(this);
-        
+      //  GetComponent<Rigidbody>().velocity.magnitude;
     }
 
     // Update is called once per frame

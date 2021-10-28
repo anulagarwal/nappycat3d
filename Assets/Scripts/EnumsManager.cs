@@ -20,3 +20,25 @@ public enum GameOverState
     Defeat,
     None
 };
+public enum GameState
+{
+    Main,
+    InGame,
+    Win,
+    Lose
+}
+public enum CatState
+{
+    WalkSleep,
+    Sleep,
+    Irritated,
+    Awake
+}
+
+public enum Sound
+{
+    Purr,
+    Meow,
+    Scream,
+    Hiss
+}

@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<GameObject> controlObjects;
     [SerializeField] public GameObject confetti;
     [SerializeField] public GameObject cross;
-
+    [SerializeField] GameObject cineCam;
+    [SerializeField] GameObject mainCam;
 
 
 
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentScore;
     [SerializeField] private int currentLevel;
     [SerializeField] private int maxLevels;
+    [SerializeField] GameState currentState;
 
 
     #endregion
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
             g.SetActive(false);
         }
         UIManager.Instance.UpdateLevel(currentLevel);
-
+        currentState = GameState.Main;
     }
     #endregion
 
@@ -55,29 +57,50 @@ public class GameManager : MonoBehaviour
         {
             g.SetActive(true);
         }
+        currentState = GameState.InGame;
+
+    }
+    public void SwitchToMainCam()
+    {
+        cineCam.SetActive(false);
+        mainCam.SetActive(true);
+
     }
 
     public void WinLevel()
     {
-
-        confetti.SetActive(true);
-        Invoke("ShowWinUI", 1.4f);
-        foreach (GameObject g in controlObjects)
+        if (currentState == GameState.InGame)
         {
-            g.SetActive(false);
-        }
-        PlayerPrefs.SetInt("level", currentLevel + 1);
-        currentLevel++;
+            confetti.SetActive(true);
+            Invoke("ShowWinUI", 1.4f);
+            foreach (GameObject g in controlObjects)
+            {
+                g.SetActive(false);
+            }
+            CatManager.Instance.enabled = false;
+            CatBoneManager.Instance.enabled = false;
+            currentState = GameState.Win;
 
-        if (currentLevel > maxLevels)
-        {
-            currentLevel = Random.Range(1, maxLevels);
+            PlayerPrefs.SetInt("level", currentLevel + 1);
+            currentLevel++;           
         }
     }
 
     public void LoseLevel()
     {
-        UIManager.Instance.SwitchUIPanel(UIPanelState.GameLose);
+        if (currentState == GameState.InGame)
+        {
+            //Show cat VFX
+            foreach (GameObject g in controlObjects)
+            {
+                g.SetActive(false);
+            }
+            CatManager.Instance.enabled = false;
+            CatBoneManager.Instance.enabled = false;
+
+            Invoke("ShowLoseUI", 2f);
+            currentState = GameState.Lose;
+        }
     }
 
     #region Scene Management
@@ -87,6 +110,22 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Level " + currentLevel);
     }
 
+    public void ChangeLevel()
+    {
+        if (currentLevel > maxLevels)
+        {
+            int newId = currentLevel % maxLevels;
+            if (newId == 0)
+            {
+                newId = maxLevels;
+            }
+            SceneManager.LoadScene("Level " + (newId));
+        }
+        else
+        {
+            SceneManager.LoadScene("Level " + currentLevel);
+        }
+    }
     public void RestartLevel()
     {
         SceneManager.LoadScene("Play");
@@ -97,12 +136,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(s);
 
     }
-    void ShowWinUI()
-    {
-        UIManager.Instance.SwitchUIPanel(UIPanelState.GameWin);
-
-    }
     #endregion
+
 
     #region Public Core Functions
 
@@ -117,8 +152,21 @@ public class GameManager : MonoBehaviour
         GameObject g= Instantiate(cross, pos, Quaternion.identity);
         g.transform.parent = t;
     }
-  
 
-  
+
+
+    #endregion
+
+    #region Invoke Functions
+
+    void ShowWinUI()
+    {
+        UIManager.Instance.SwitchUIPanel(UIPanelState.GameWin);
+    }
+
+    void ShowLoseUI()
+    {
+        UIManager.Instance.SwitchUIPanel(UIPanelState.GameLose);
+    }
     #endregion
 }
