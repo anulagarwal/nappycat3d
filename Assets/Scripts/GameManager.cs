@@ -75,9 +75,8 @@ public class GameManager : MonoBehaviour
     }
     public void SwitchToMainCam()
     {
-        cineCam.SetActive(false);
-        mainCam.SetActive(true);
-
+        //cineCam.SetActive(false);
+        //mainCam.SetActive(true);
     }
 
     public void WinLevel()

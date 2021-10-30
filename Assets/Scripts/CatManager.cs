@@ -13,10 +13,11 @@ public class CatManager : MonoBehaviour
     [SerializeField] CatState startState;
 
 
+    [Header("Component References")]
     [SerializeField] private RamecanMixer rmm;
     [SerializeField] GameObject sleepingVfx;
     [SerializeField] GameObject angryVfx;
-
+    [SerializeField] Animator emotionAnimator;
 
 
     public static CatManager Instance = null;
@@ -105,12 +106,15 @@ public class CatManager : MonoBehaviour
                 SoundManager.Instance.Play(Sound.Purr);
                 GameManager.Instance.SwitchToMainCam();
                 sleepingVfx.SetActive(true);
+                emotionAnimator.Play("Sleep");
+
                 break;
 
             case CatState.Irritated:
                 SoundManager.Instance.Play(Sound.Scream);
                 sleepingVfx.SetActive(false);
                 angryVfx.SetActive(true);
+                emotionAnimator.Play("Angry");
                 //Show face anim
                 break;
 
