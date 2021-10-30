@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject cross;
     [SerializeField] GameObject cineCam;
     [SerializeField] GameObject mainCam;
+    [SerializeField] Animator catEmotionAnim;
+
 
 
 
@@ -50,7 +52,17 @@ public class GameManager : MonoBehaviour
         maxLevels = 3;
     }
     #endregion
+    private void Update()
+    {
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+
+            SoundManager.Instance.Play(Sound.Scream);
+            catEmotionAnim.Play("Angry");
+
+        }
+    }
     public void StartLevel()
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.Gameplay);
