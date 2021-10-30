@@ -27,6 +27,11 @@ public enum GameState
     Win,
     Lose
 }
+public enum SelectorType
+{
+    Rotator,
+    Mover
+}
 public enum CatState
 {
     WalkSleep,

@@ -34,7 +34,6 @@ public class PartRotator : MonoBehaviour
     private void OnMouseDown()
     {
         origPos = Input.mousePosition;
-        print("down");
         isDown = true;
     }
 

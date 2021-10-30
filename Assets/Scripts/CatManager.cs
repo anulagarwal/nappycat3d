@@ -106,7 +106,7 @@ public class CatManager : MonoBehaviour
                 SoundManager.Instance.Play(Sound.Purr);
                 GameManager.Instance.SwitchToMainCam();
                 sleepingVfx.SetActive(true);
-                emotionAnimator.Play("Sleep");
+           //     emotionAnimator.Play("Sleep");
 
                 break;
 
@@ -114,7 +114,7 @@ public class CatManager : MonoBehaviour
                 SoundManager.Instance.Play(Sound.Scream);
                 sleepingVfx.SetActive(false);
                 angryVfx.SetActive(true);
-                emotionAnimator.Play("Angry");
+              //  emotionAnimator.Play("Angry");
                 //Show face anim
                 break;
 

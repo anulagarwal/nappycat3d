@@ -5,44 +5,45 @@ using UnityEngine;
 public class Selector : MonoBehaviour
 {
     [Header("Attributes")]
-    bool isMouseDown;
 
-
+    [SerializeField] SelectorType type;
 
     [SerializeField] Vector3 rotateAxis;
     [SerializeField] Vector3 minRotClamp;
     [SerializeField] Vector3 maxRotClamp;
 
-
-    private float _sensitivity;
+   [SerializeField] private float _sensitivity = 0.2f;
     private Vector3 _mouseReference;
     private Vector3 _mouseOffset;
     private Vector3 _rotation;
+
+    bool isMouseDown;
+
     private Vector3 baseRot;
+   [SerializeField] private Rigidbody rbTarg;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _sensitivity = 0.2f;
+       
         _rotation = Vector3.zero;
         baseRot = transform.parent.eulerAngles;
         
     }
 
-    float ClampAngle(float angle, float from, float to)
+    float ClampAngle(float angle, float min, float max)
     {
-        // accepts e.g. -80, 80
-      //  angle = angle - 180f * Mathf.Floor((angle + 180f) / 180f);
-       if (angle < 0f) angle = 360 + angle;
-
-       //if (angle > 360f) angle = 358f;
-         if (angle > 180f)
-           return Mathf.Max(angle, 360 + from);
-
-         return Mathf.Max(Mathf.Min(angle, to), from);
-       // return Mathf.Clamp(angle, from, to);
+        if (angle < 90 || angle > 270)
+        {       // if angle in the critic region...
+            if (angle > 180) angle -= 360;  // convert all angles to -180..+180
+            if (max > 180) max -= 360;
+            if (min > 180) min -= 360;
+        }
+        angle = Mathf.Clamp(angle, min, max);
+        if (angle < 0) angle += 360;  // if angle negative, convert to 0..360
+        return angle;
     }
 
     // Update is called once per frame
@@ -58,43 +59,28 @@ public class Selector : MonoBehaviour
         {
             if (isMouseDown)
             {
-                // offset
                 _mouseOffset = (Input.mousePosition - _mouseReference);
 
-                // apply rotation
-                _rotation.y = -(_mouseOffset.x ) * _sensitivity;
-                _rotation.x = -(_mouseOffset.y) * _sensitivity;
-                _rotation.z = -(_mouseOffset.y) * _sensitivity;
+                if (type == SelectorType.Rotator)
+                {
+                    // offset
 
-                Vector3 rotVec = Vector3.zero;
-                // rotate
-                if(transform.parent.rotation.x +(_rotation.x * rotateAxis.x) > baseRot.x + minRotClamp.x && transform.parent.rotation.x + (_rotation.x * rotateAxis.x) < baseRot.x + maxRotClamp.x)
-                {
-                    rotVec = new Vector3(_rotation.x * rotateAxis.x, rotVec.y, rotVec.z);
-                }
-                if (transform.parent.rotation.y+ (_rotation.y * rotateAxis.y) > baseRot.y + minRotClamp.y && transform.parent.rotation.y + (_rotation.y * rotateAxis.y) < baseRot.y + maxRotClamp.y)
-                {
-                    rotVec = new Vector3( rotVec.x, _rotation.y * rotateAxis.y, rotVec.z);
-                }
-                if (transform.parent.rotation.z + (_rotation.z * rotateAxis.z) > baseRot.z + minRotClamp.z && transform.parent.rotation.z + (_rotation.z * rotateAxis.z) < baseRot.z + maxRotClamp.z)
-                {
-                    rotVec = new Vector3( rotVec.x, rotVec.y, _rotation.z * rotateAxis.z);
+                    // apply rotation
+                    _rotation.y = -(_mouseOffset.x) * _sensitivity;
+                    _rotation.x = -(_mouseOffset.y) * _sensitivity;
+                    _rotation.z = -(_mouseOffset.y) * _sensitivity;
+
+                    transform.parent.Rotate(new Vector3(_rotation.x * rotateAxis.x, _rotation.y * rotateAxis.y, _rotation.z * rotateAxis.z), Space.World);
+                    transform.parent.rotation = Quaternion.Euler(ClampAngle(transform.parent.eulerAngles.x, baseRot.x + minRotClamp.x, baseRot.x + maxRotClamp.x), ClampAngle(transform.parent.eulerAngles.y, baseRot.y + minRotClamp.y, baseRot.y + maxRotClamp.y), ClampAngle(transform.parent.eulerAngles.z, baseRot.z + minRotClamp.z, baseRot.z + maxRotClamp.z));
                 }
 
-                //  transform.parent.Rotate(new Vector3(_rotation.x * rotateAxis.x, _rotation.y * rotateAxis.y, _rotation.z * rotateAxis.z), Space.World);
-                transform.parent.Rotate(rotVec, Space.World);
-
-                // store mouse
-
-
-                //if((_rotation.z * rotateAxis.z) + transform.parent.localRotation.
-
-                // transform.parent.localRotation = Quaternion.Euler(ClampAngle(transform.parent.localEulerAngles.x, minRotClamp.x, maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, minRotClamp.y, maxRotClamp.y), Mathf.Clamp(transform.parent.localEulerAngles.z, minRotClamp.z, maxRotClamp.z));
-               // transform.parent.rotation = Quaternion.Euler(Mathf.Clamp(transform.parent.eulerAngles.x, baseRot.x+ minRotClamp.x,baseRot.x+ maxRotClamp.x), Mathf.Clamp(transform.parent.eulerAngles.y, baseRot.y+ minRotClamp.y,baseRot.y+ maxRotClamp.y), Mathf.Clamp(transform.parent.eulerAngles.z,baseRot.z+ minRotClamp.z,baseRot.z+ maxRotClamp.z));
-
-
-                //transform.parent.localEulerAngles = new Vector3(Mathf.Clamp(transform.parent.localEulerAngles.x, minRotClamp.x, maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, minRotClamp.y, maxRotClamp.y), ClampAngle(transform.parent.localEulerAngles.z, minRotClamp.z, maxRotClamp.z));
+                if(type == SelectorType.Mover)
+                {
+                    transform.parent.Translate(new Vector3( -_mouseOffset.x,  _mouseOffset.y ,0) * Time.deltaTime * _sensitivity, Space.World);
+                    
+                }
                 _mouseReference = Input.mousePosition;
+
             }
         }
 
@@ -109,12 +95,19 @@ public class Selector : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.green;
         _mouseReference = Input.mousePosition;
         isMouseDown = true;
+        if(type== SelectorType.Mover)
+        {
+            rbTarg = transform.parent.GetComponent<Rigidbody>();
+            rbTarg.isKinematic = true;
+        }
     }
 
     private void OnMouseUp()
     {
         GetComponent<SpriteRenderer>().color = Color.white;
         isMouseDown = false;
+        rbTarg.isKinematic = false;
+        rbTarg = null;
 
     }
 }
