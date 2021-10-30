@@ -27,7 +27,7 @@ public class Selector : MonoBehaviour
     {
         _sensitivity = 0.2f;
         _rotation = Vector3.zero;
-        baseRot = transform.parent.localEulerAngles;
+        baseRot = transform.parent.eulerAngles;
         
     }
 
@@ -68,15 +68,29 @@ public class Selector : MonoBehaviour
 
                 Vector3 rotVec = Vector3.zero;
                 // rotate
-                 transform.parent.Rotate(new Vector3(_rotation.x * rotateAxis.x, _rotation.y * rotateAxis.y, _rotation.z * rotateAxis.z));
+                if(transform.parent.rotation.x +(_rotation.x * rotateAxis.x) > baseRot.x + minRotClamp.x && transform.parent.rotation.x + (_rotation.x * rotateAxis.x) < baseRot.x + maxRotClamp.x)
+                {
+                    rotVec = new Vector3(_rotation.x * rotateAxis.x, rotVec.y, rotVec.z);
+                }
+                if (transform.parent.rotation.y+ (_rotation.y * rotateAxis.y) > baseRot.y + minRotClamp.y && transform.parent.rotation.y + (_rotation.y * rotateAxis.y) < baseRot.y + maxRotClamp.y)
+                {
+                    rotVec = new Vector3( rotVec.x, _rotation.y * rotateAxis.y, rotVec.z);
+                }
+                if (transform.parent.rotation.z + (_rotation.z * rotateAxis.z) > baseRot.z + minRotClamp.z && transform.parent.rotation.z + (_rotation.z * rotateAxis.z) < baseRot.z + maxRotClamp.z)
+                {
+                    rotVec = new Vector3( rotVec.x, rotVec.y, _rotation.z * rotateAxis.z);
+                }
+
+                //  transform.parent.Rotate(new Vector3(_rotation.x * rotateAxis.x, _rotation.y * rotateAxis.y, _rotation.z * rotateAxis.z), Space.World);
+                transform.parent.Rotate(rotVec, Space.World);
+
                 // store mouse
-             
+
 
                 //if((_rotation.z * rotateAxis.z) + transform.parent.localRotation.
-                print(transform.parent.localEulerAngles);
 
                 // transform.parent.localRotation = Quaternion.Euler(ClampAngle(transform.parent.localEulerAngles.x, minRotClamp.x, maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, minRotClamp.y, maxRotClamp.y), Mathf.Clamp(transform.parent.localEulerAngles.z, minRotClamp.z, maxRotClamp.z));
-                transform.parent.localRotation = Quaternion.Euler(ClampAngle(transform.parent.localEulerAngles.x, baseRot.x+ minRotClamp.x,baseRot.x+ maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, baseRot.y+ minRotClamp.y,baseRot.y+ maxRotClamp.y), ClampAngle(transform.parent.localEulerAngles.z,baseRot.z+ minRotClamp.z,baseRot.z+ maxRotClamp.z));
+               // transform.parent.rotation = Quaternion.Euler(Mathf.Clamp(transform.parent.eulerAngles.x, baseRot.x+ minRotClamp.x,baseRot.x+ maxRotClamp.x), Mathf.Clamp(transform.parent.eulerAngles.y, baseRot.y+ minRotClamp.y,baseRot.y+ maxRotClamp.y), Mathf.Clamp(transform.parent.eulerAngles.z,baseRot.z+ minRotClamp.z,baseRot.z+ maxRotClamp.z));
 
 
                 //transform.parent.localEulerAngles = new Vector3(Mathf.Clamp(transform.parent.localEulerAngles.x, minRotClamp.x, maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, minRotClamp.y, maxRotClamp.y), ClampAngle(transform.parent.localEulerAngles.z, minRotClamp.z, maxRotClamp.z));
