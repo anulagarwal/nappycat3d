@@ -31,15 +31,15 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: 0.000000011233478, y: -0.7071066, z: -0.7071072, w: -0.00000003337799}
+    rotation: {x: 0.000000010265774, y: -0.7071066, z: -0.7071072, w: -0.000000034293347}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0, z: 0.12683134}
-      m_Extent: {x: 0.05, y: 0.05, z: 0.12683134}
+      m_Center: {x: 0, y: 0.007611107, z: 0.21624133}
+      m_Extent: {x: 0.05, y: 0.05761111, z: 0.037421405}
     capsuleBounds:
-      height: 0.25366268
+      height: 0.11522222
       radius: 0.05
-      direction: 2
+      direction: 1
     axis: {x: 1, y: 0, z: 0}
     swingAxis: {x: 0, y: 1, z: 0}
     lowTwistLimit: -20
@@ -104,8 +104,8 @@ MonoBehaviour:
     swingAxis: {x: 0, y: 1, z: 0}
     lowTwistLimit: -20
     highTwistLimit: 20
-    swing1Limit: 0
-    swing2Limit: 0
+    swing1Limit: 12.680238
+    swing2Limit: 14.671374
     direction: {x: 0, y: 0, z: 0}
     massInPercent: 0.029411765
   - name: hip_b.L
@@ -121,14 +121,14 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.46442497, y: 0.004101459, z: 0.007820822, w: -0.88556856}
+    rotation: {x: -0.4644251, y: 0.004101483, z: 0.007820787, w: -0.8855685}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0, z: 0.047426417}
-      m_Extent: {x: 0.016659256, y: 0.05, z: 0.047426417}
+      m_Center: {x: 0, y: 0, z: 0.04742643}
+      m_Extent: {x: 0.016659256, y: 0.05, z: 0.04742643}
     capsuleBounds:
       height: 0.1
-      radius: 0.047426417
+      radius: 0.04742643
       direction: 1
     axis: {x: 1, y: 0, z: 0}
     swingAxis: {x: 0, y: 1, z: 0}
@@ -151,13 +151,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.9256748, y: -0.047991186, z: -0.019429235, w: -0.37476087}
+    rotation: {x: -0.9256748, y: -0.04799111, z: -0.019429278, w: -0.3747609}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0.004248466, z: 0.05769226}
-      m_Extent: {x: 0.011443229, y: 0.017990895, z: 0.05769226}
+      m_Center: {x: 0, y: 0.004248466, z: 0.05769227}
+      m_Extent: {x: 0.011443229, y: 0.017990895, z: 0.05769227}
     capsuleBounds:
-      height: 0.11538452
+      height: 0.11538454
       radius: 0.017990895
       direction: 2
     axis: {x: 1, y: 0, z: 0}
@@ -241,14 +241,14 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.46442786, y: -0.0041010506, z: -0.0078198435, w: -0.885567}
+    rotation: {x: -0.46442795, y: -0.0041013975, z: -0.007820527, w: -0.88556695}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0, z: 0.047426187}
-      m_Extent: {x: 0.01114743, y: 0.05, z: 0.047426187}
+      m_Center: {x: 0, y: 0, z: 0.047426198}
+      m_Extent: {x: 0.01114743, y: 0.05, z: 0.047426198}
     capsuleBounds:
       height: 0.1
-      radius: 0.047426187
+      radius: 0.047426198
       direction: 1
     axis: {x: 1, y: 0, z: 0}
     swingAxis: {x: 0, y: 1, z: 0}
@@ -271,14 +271,14 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.9246543, y: 0.058944277, z: 0.023934394, w: -0.37545604}
+    rotation: {x: -0.92465544, y: 0.0589452, z: 0.023934439, w: -0.37545332}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0, z: 0.05769196}
-      m_Extent: {x: 0.026938379, y: 0.01907868, z: 0.05769196}
+      m_Center: {x: -0.009467736, y: 0, z: 0.057692297}
+      m_Extent: {x: 0.017470643, y: 0.01907868, z: 0.057692297}
     capsuleBounds:
-      height: 0.11538392
-      radius: 0.026938379
+      height: 0.11538459
+      radius: 0.01907868
       direction: 2
     axis: {x: 1, y: 0, z: 0}
     swingAxis: {x: 0, y: 1, z: 0}
@@ -301,13 +301,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.52698135, y: 0.011328059, z: 0.018263321, w: -0.8496052}
+    rotation: {x: -0.52697724, y: 0.011327988, z: 0.018263258, w: -0.84960777}
     colliderType: 0
     bounds:
-      m_Center: {x: 0.0011099875, y: -0.002984915, z: 0.04218284}
-      m_Extent: {x: 0.016822807, y: 0.0130616035, z: 0.04218284}
+      m_Center: {x: 0.0011099875, y: -0.002984915, z: 0.042183083}
+      m_Extent: {x: 0.016822807, y: 0.0130616035, z: 0.042183083}
     capsuleBounds:
-      height: 0.08436568
+      height: 0.084366165
       radius: 0.016822807
       direction: 2
     axis: {x: 1, y: 0, z: 0}
@@ -364,18 +364,18 @@ MonoBehaviour:
     rotation: {x: -0.8993953, y: 0.00000022220394, z: 0.00000013367237, w: -0.4371364}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: -0.0034383298, z: 0.034508422}
-      m_Extent: {x: 0.010092076, y: 0.016052967, z: 0.034508422}
+      m_Center: {x: 0, y: -0.0034383293, z: 0.03626882}
+      m_Extent: {x: 0.010092076, y: 0.016052967, z: 0.032748025}
     capsuleBounds:
-      height: 0.069016844
+      height: 0.06549605
       radius: 0.016052967
       direction: 2
     axis: {x: 1, y: 0, z: 0}
     swingAxis: {x: 0, y: 1, z: 0}
     lowTwistLimit: -20
     highTwistLimit: 20
-    swing1Limit: 0
-    swing2Limit: 0
+    swing1Limit: 19.560099
+    swing2Limit: 30.228722
     direction: {x: 0, y: 0, z: 0}
     massInPercent: 0.029411765
   - name: tail_03
@@ -391,13 +391,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.9165116, y: -0.20515548, z: -0.075009845, w: -0.33509922}
+    rotation: {x: -0.9165116, y: -0.2051552, z: -0.07500985, w: -0.33509943}
     colliderType: 0
     bounds:
-      m_Center: {x: 0.0014711106, y: -0.0037764385, z: 0.033636447}
-      m_Extent: {x: 0.012365508, y: 0.016892832, z: 0.033636447}
+      m_Center: {x: 0.0014711106, y: -0.0037764385, z: 0.033636466}
+      m_Extent: {x: 0.012365508, y: 0.016892832, z: 0.033636466}
     capsuleBounds:
-      height: 0.067272894
+      height: 0.06727293
       radius: 0.016892832
       direction: 2
     axis: {x: 1, y: 0, z: 0}
@@ -421,13 +421,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: 0.88055956, y: 0.363067, z: 0.1161188, w: 0.2816271}
+    rotation: {x: 0.8805595, y: 0.3630673, z: 0.116118856, w: 0.28162697}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: -0.0032206331, z: 0.030452954}
-      m_Extent: {x: 0.0096584065, y: 0.014732622, z: 0.030452954}
+      m_Center: {x: 0, y: -0.0032206331, z: 0.030452946}
+      m_Extent: {x: 0.0096584065, y: 0.014732622, z: 0.030452946}
     capsuleBounds:
-      height: 0.060905907
+      height: 0.060905892
       radius: 0.014732622
       direction: 2
     axis: {x: 1, y: 0, z: 0}
@@ -541,11 +541,11 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: 0.000000102762435, y: -0.37171552, z: -0.9283468, w: 0.00000008655712}
+    rotation: {x: 0.000000060271056, y: -0.3717159, z: -0.9283467, w: 0.00000016449474}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0, z: 0.034164164}
-      m_Extent: {x: 0.034373272, y: 0.05, z: 0.034164164}
+      m_Center: {x: 0, y: 0, z: 0.034164198}
+      m_Extent: {x: 0.034373272, y: 0.05, z: 0.034164198}
     capsuleBounds:
       height: 0.1
       radius: 0.034373272
@@ -571,11 +571,11 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.30083343, y: -0.00000068650974, z: -0.000002099265, w: -0.9536768}
+    rotation: {x: -0.3008351, y: -0.0000006940445, z: -0.0000021095955, w: -0.9536762}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0, z: 0.007347398}
-      m_Extent: {x: 0.05, y: 0.05, z: 0.007347398}
+      m_Center: {x: 0, y: 0, z: 0.0073474133}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.0073474133}
     capsuleBounds:
       height: 0.1
       radius: 0.05
@@ -631,14 +631,14 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.52124965, y: -0.00000008100543, z: -0.00000007322691, w: -0.85340434}
+    rotation: {x: -0.5212497, y: -0.00000008060058, z: -0.00000007316879, w: -0.8534043}
     colliderType: 0
     bounds:
-      m_Center: {x: 0.0041989973, y: 0, z: 0.039531115}
-      m_Extent: {x: 0.01422358, y: 0.05, z: 0.039531115}
+      m_Center: {x: 0.0041989973, y: 0, z: 0.03953113}
+      m_Extent: {x: 0.01422358, y: 0.05, z: 0.03953113}
     capsuleBounds:
       height: 0.1
-      radius: 0.039531115
+      radius: 0.03953113
       direction: 1
     axis: {x: 1, y: 0, z: 0}
     swingAxis: {x: 0, y: 1, z: 0}
@@ -691,13 +691,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.65452737, y: -0.018746778, z: -0.021638656, w: -0.7554961}
+    rotation: {x: -0.6545273, y: -0.018746786, z: -0.021638663, w: -0.75549614}
     colliderType: 0
     bounds:
-      m_Center: {x: 0.00013405923, y: 0, z: 0.05330742}
-      m_Extent: {x: 0.011617874, y: 0.019538134, z: 0.05330742}
+      m_Center: {x: 0.00013405923, y: 0, z: 0.053307407}
+      m_Extent: {x: 0.011617874, y: 0.019538134, z: 0.053307407}
     capsuleBounds:
-      height: 0.10661484
+      height: 0.10661481
       radius: 0.019538134
       direction: 2
     axis: {x: 1, y: 0, z: 0}
@@ -721,13 +721,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.53170395, y: -0.0000059896256, z: -0.000009513502, w: -0.8469303}
+    rotation: {x: -0.5317045, y: -0.0000059565637, z: -0.0000095408395, w: -0.8469301}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: -0.00038287463, z: 0.01564193}
-      m_Extent: {x: 0.011767808, y: 0.0109790955, z: 0.01564193}
+      m_Center: {x: 0, y: -0.00038287463, z: 0.015641956}
+      m_Extent: {x: 0.011767808, y: 0.0109790955, z: 0.015641956}
     capsuleBounds:
-      height: 0.03128386
+      height: 0.03128391
       radius: 0.011767808
       direction: 2
     axis: {x: 1, y: 0, z: 0}
@@ -781,14 +781,14 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.4879894, y: 0.00000009398298, z: 0.00000016421521, w: -0.87284964}
+    rotation: {x: -0.48799366, y: 0.00000013666619, z: 0.00000019785129, w: -0.87284726}
     colliderType: 0
     bounds:
-      m_Center: {x: -0.0019503548, y: 0, z: 0.039531324}
-      m_Extent: {x: 0.015396098, y: 0.05, z: 0.039531324}
+      m_Center: {x: -0.0019503548, y: 0, z: 0.039531045}
+      m_Extent: {x: 0.015396098, y: 0.05, z: 0.039531045}
     capsuleBounds:
       height: 0.1
-      radius: 0.039531324
+      radius: 0.039531045
       direction: 1
     axis: {x: 1, y: 0, z: 0}
     swingAxis: {x: 0, y: 1, z: 0}
@@ -811,13 +811,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.88963926, y: 0.045176473, z: 0.023046251, w: -0.45383942}
+    rotation: {x: -0.88963914, y: 0.045176383, z: 0.023046277, w: -0.4538395}
     colliderType: 0
     bounds:
-      m_Center: {x: 0, y: 0, z: 0.035546623}
-      m_Extent: {x: 0.0138620315, y: 0.01558339, z: 0.035546623}
+      m_Center: {x: 0, y: 0, z: 0.035546634}
+      m_Extent: {x: 0.0138620315, y: 0.01558339, z: 0.035546634}
     capsuleBounds:
-      height: 0.07109325
+      height: 0.07109327
       radius: 0.01558339
       direction: 2
     axis: {x: 1, y: 0, z: 0}
@@ -871,13 +871,13 @@ MonoBehaviour:
       height: 0
     selected: 0
     characterBoneId: -1
-    rotation: {x: -0.5317031, y: -0.0000015001302, z: -0.0000023860637, w: -0.84693086}
+    rotation: {x: -0.53170335, y: -0.0000014611043, z: -0.000002406268, w: -0.8469308}
     colliderType: 0
     bounds:
-      m_Center: {x: 0.0014524455, y: 0.0027697324, z: 0.015641877}
-      m_Extent: {x: 0.0117385015, y: 0.005227476, z: 0.015641877}
+      m_Center: {x: 0.0014524455, y: 0.0027697324, z: 0.01564189}
+      m_Extent: {x: 0.0117385015, y: 0.005227476, z: 0.01564189}
     capsuleBounds:
-      height: 0.031283755
+      height: 0.03128378
       radius: 0.0117385015
       direction: 2
     axis: {x: 1, y: 0, z: 0}

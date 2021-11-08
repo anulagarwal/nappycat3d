@@ -28,9 +28,7 @@ public class Bone : MonoBehaviour
         if (collision.gameObject.tag == "Thigh")
         {
             isTouchingHuman = true;       
-            CatBoneManager.Instance.AddTouchingBone(this);
-            cross =Instantiate(GameManager.Instance.cross, collision.contacts[0].point, Quaternion.identity);
-            cross.transform.SetParent(transform);
+            CatBoneManager.Instance.AddTouchingBone(this);        
         }
 
     

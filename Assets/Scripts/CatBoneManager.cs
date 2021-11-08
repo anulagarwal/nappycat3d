@@ -50,7 +50,7 @@ public class CatBoneManager : MonoBehaviour
             touchPercent = (1 - ((float)touchingBones.Count / (float)bones.Count)) * 100;
            // UIManager.Instance.UpdateFillBar(touchPercent / 100);
         }
-        if (touchingBones.Count <= 0)
+        if (touchingBones.Count <= 2)
         {
 
             Invoke("Win", 1.5f);

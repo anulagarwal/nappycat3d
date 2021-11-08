@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
         }
         source.clip= sounds.Find(x => x.sound == s).clip;
         source.Play();
-
+        source.volume = 0.6f;
        
     }
 }

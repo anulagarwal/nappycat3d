@@ -95,18 +95,18 @@ public class CatManager : MonoBehaviour
         switch (state)
         {
             case CatState.WalkSleep:
-                GetComponent<Animator>().enabled = true;
                 rmm.BeginStateTransition("sleep");
                 SoundManager.Instance.Play(Sound.Meow);
                 break;
 
             case CatState.Sleep:
                 rmm.BeginStateTransition("default");
-                GetComponent<Animator>().enabled = false;
                 SoundManager.Instance.Play(Sound.Purr);
                 GameManager.Instance.SwitchToMainCam();
                 sleepingVfx.SetActive(true);
-           //     emotionAnimator.Play("Sleep");
+                emotionAnimator.enabled = true;
+                emotionAnimator.Play("Sleep");
+//                emotionAnimator.Play("Sleep");
 
                 break;
 
@@ -114,7 +114,9 @@ public class CatManager : MonoBehaviour
                 SoundManager.Instance.Play(Sound.Scream);
                 sleepingVfx.SetActive(false);
                 angryVfx.SetActive(true);
-              //  emotionAnimator.Play("Angry");
+                emotionAnimator.Play("Angry");
+
+                //            emotionAnimator.Play("Angry");
                 //Show face anim
                 break;
 

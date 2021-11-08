@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Human
   - Thigh
+  - Selector
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Selector
   - Water
   - UI
   - 

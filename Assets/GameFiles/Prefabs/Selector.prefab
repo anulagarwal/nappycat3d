@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5204199475151771131}
   - component: {fileID: 5204199475151771129}
   - component: {fileID: 5204199475151771128}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Selector
-  m_TagString: Untagged
+  m_TagString: Selector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0eec525b6ed480492c0b7afb2494e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  rotateAxis: {x: 0, y: 0, z: 0}
+  minRotClamp: {x: 0, y: 0, z: 0}
+  maxRotClamp: {x: 0, y: 0, z: 0}
+  _sensitivity: 0.2
+  isYOnYAxis: 0
+  rbTarg: {fileID: 0}
 --- !u!212 &5204199475151771131
 SpriteRenderer:
   m_ObjectHideFlags: 0

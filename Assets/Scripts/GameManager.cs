@@ -11,13 +11,6 @@ public class GameManager : MonoBehaviour
     [Header("Component Reference")]
     [SerializeField] public List<GameObject> controlObjects;
     [SerializeField] public GameObject confetti;
-    [SerializeField] public GameObject cross;
-    [SerializeField] GameObject cineCam;
-    [SerializeField] GameObject mainCam;
-    [SerializeField] Animator catEmotionAnim;
-
-
-
 
     [Header("Attributes")]
     [SerializeField] private int currentScore;
@@ -49,19 +42,13 @@ public class GameManager : MonoBehaviour
         }
         UIManager.Instance.UpdateLevel(currentLevel);
         currentState = GameState.Main;
-        maxLevels = 3;
+        maxLevels = 4;
+        TinySauce.OnGameStarted();
     }
     #endregion
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-
-            SoundManager.Instance.Play(Sound.Scream);
-            catEmotionAnim.Play("Angry");
-
-        }
     }
     public void StartLevel()
     {
@@ -71,6 +58,8 @@ public class GameManager : MonoBehaviour
             g.SetActive(true);
         }
         currentState = GameState.InGame;
+        TinySauce.OnGameStarted(currentLevel+"");
+
 
     }
     public void SwitchToMainCam()
@@ -94,6 +83,8 @@ public class GameManager : MonoBehaviour
             currentState = GameState.Win;
 
             PlayerPrefs.SetInt("level", currentLevel + 1);
+            TinySauce.OnGameFinished(true, 0);
+
             currentLevel++;           
         }
     }
@@ -112,6 +103,7 @@ public class GameManager : MonoBehaviour
 
             Invoke("ShowLoseUI", 2f);
             currentState = GameState.Lose;
+            TinySauce.OnGameFinished(false, 0);
         }
     }
 
@@ -145,15 +137,7 @@ public class GameManager : MonoBehaviour
     {
         currentScore += value;
         UIManager.Instance.UpdateScore(currentScore);
-    }
-
-    public void SpawnCross(Vector3 pos, Transform t)
-    {
-        GameObject g= Instantiate(cross, pos, Quaternion.identity);
-        g.transform.parent = t;
-    }
-
-
+    } 
 
     #endregion
 

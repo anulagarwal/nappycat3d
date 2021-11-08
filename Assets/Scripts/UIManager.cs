@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverLoseUIPanel = null;
     [SerializeField] private TextMeshProUGUI scoreText = null;
     [SerializeField] private Text mainLevelText = null;
-    [SerializeField] private Text inGameLevelText = null;
 
     [Header("Fill Bar")]
     [SerializeField] private Image fillBar;
@@ -98,7 +97,6 @@ public class UIManager : MonoBehaviour
     public void UpdateLevel(int level)
     {
         mainLevelText.text = "LEVEL " + level;
-        inGameLevelText.text = "LEVEL " + level;
     }
 
     public void UpdateFillBar(float val)
@@ -124,6 +122,26 @@ public class UIManager : MonoBehaviour
     {
         GameObject g = Instantiate(AwesomeText, new Vector3(point.x, 2, point.z), Quaternion.identity);
         g.GetComponentInChildren<TextMeshPro>().text = s;
+    }
+
+    public void OpenSocialLinks(string s)
+    {
+        switch (s)
+        {
+            case "instagram":
+                Application.OpenURL("http://instagram.com/momo.games_");
+                break;
+
+            case "linkedin":
+                Application.OpenURL("http://linkedin.com/momo-games");
+
+                break;
+
+            case "twitter":
+                Application.OpenURL("https://twitter.com/AnulAgarwal");
+                break;
+
+        }
     }
     #endregion
 

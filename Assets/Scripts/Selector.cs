@@ -16,6 +16,7 @@ public class Selector : MonoBehaviour
     private Vector3 _mouseReference;
     private Vector3 _mouseOffset;
     private Vector3 _rotation;
+    [SerializeField] bool isYOnYAxis;
 
     bool isMouseDown;
 
@@ -29,7 +30,7 @@ public class Selector : MonoBehaviour
     {
        
         _rotation = Vector3.zero;
-        baseRot = transform.parent.eulerAngles;
+        baseRot = transform.parent.localEulerAngles;
         
     }
 
@@ -52,7 +53,22 @@ public class Selector : MonoBehaviour
         //transform.rotation = Quaternion.Euler(0, -0, 0);
         if (Input.GetMouseButtonDown(0))
         {
-
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 1 << LayerMask.NameToLayer("Selector")))
+            {
+                if (hit.collider == GetComponent<BoxCollider>())
+                {
+                    GetComponent<SpriteRenderer>().color = Color.green;
+                    _mouseReference = Input.mousePosition;
+                    isMouseDown = true;
+                    if (type == SelectorType.Mover)
+                    {
+                        rbTarg = transform.parent.GetComponent<Rigidbody>();
+                        rbTarg.isKinematic = true;
+                    }
+                }
+            }
         }
 
         if(Input.GetMouseButton(0))
@@ -66,17 +82,25 @@ public class Selector : MonoBehaviour
                     // offset
 
                     // apply rotation
-                    _rotation.y = -(_mouseOffset.x) * _sensitivity;
+                    if (!isYOnYAxis)
+                    {
+                        _rotation.y = -(_mouseOffset.x) * _sensitivity;
+                    }
+                    else if (isYOnYAxis)
+                    {
+                        _rotation.y = -(_mouseOffset.y) * _sensitivity;
+
+                    }
                     _rotation.x = -(_mouseOffset.y) * _sensitivity;
                     _rotation.z = -(_mouseOffset.y) * _sensitivity;
-
                     transform.parent.Rotate(new Vector3(_rotation.x * rotateAxis.x, _rotation.y * rotateAxis.y, _rotation.z * rotateAxis.z), Space.World);
-                    transform.parent.rotation = Quaternion.Euler(ClampAngle(transform.parent.eulerAngles.x, baseRot.x + minRotClamp.x, baseRot.x + maxRotClamp.x), ClampAngle(transform.parent.eulerAngles.y, baseRot.y + minRotClamp.y, baseRot.y + maxRotClamp.y), ClampAngle(transform.parent.eulerAngles.z, baseRot.z + minRotClamp.z, baseRot.z + maxRotClamp.z));
+                    transform.parent.localRotation = Quaternion.Euler(ClampAngle(transform.parent.localEulerAngles.x, baseRot.x + minRotClamp.x, baseRot.x + maxRotClamp.x), ClampAngle(transform.parent.localEulerAngles.y, baseRot.y + minRotClamp.y, baseRot.y + maxRotClamp.y), ClampAngle(transform.parent.localEulerAngles.z, baseRot.z + minRotClamp.z, baseRot.z + maxRotClamp.z));
+
                 }
 
                 if(type == SelectorType.Mover)
                 {
-                    transform.parent.Translate(new Vector3( -_mouseOffset.x,  _mouseOffset.y ,0) * Time.deltaTime * _sensitivity, Space.World);
+                    transform.parent.Translate(new Vector3( -_mouseOffset.x * rotateAxis.x,  _mouseOffset.y * rotateAxis.y, -_mouseOffset.x * rotateAxis.z) * Time.deltaTime * _sensitivity, Space.World);
                     
                 }
                 _mouseReference = Input.mousePosition;
@@ -92,22 +116,25 @@ public class Selector : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GetComponent<SpriteRenderer>().color = Color.green;
+        /*GetComponent<SpriteRenderer>().color = Color.green;
         _mouseReference = Input.mousePosition;
         isMouseDown = true;
         if(type== SelectorType.Mover)
         {
             rbTarg = transform.parent.GetComponent<Rigidbody>();
             rbTarg.isKinematic = true;
-        }
+        }*/
     }
 
     private void OnMouseUp()
     {
         GetComponent<SpriteRenderer>().color = Color.white;
         isMouseDown = false;
-        rbTarg.isKinematic = false;
-        rbTarg = null;
+        if (rbTarg != null)
+        {
+            rbTarg.isKinematic = false;
+            rbTarg = null;
+        }
 
     }
 }
